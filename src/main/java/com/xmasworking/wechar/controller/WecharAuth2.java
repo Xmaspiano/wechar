@@ -23,6 +23,10 @@ public class WecharAuth2{
         String timestamp=weCharModel.getTimestamp();
         String nonce=weCharModel.getNonce();
 
+        if("".equals(signature) || "".equals(timestamp) || "".equals(nonce)){
+            return weCharModel.toString();
+        }
+
         if (CheckUtil.checkSignature(signature, timestamp, nonce)) {
             return weCharModel.getEchostr();
         }
