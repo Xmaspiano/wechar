@@ -1,7 +1,9 @@
 package com.xmasworking.wechar.controller;
 
-import com.xmasworking.wechar.model.WeCharModel;
+import com.xmasworking.wechar.model.WeCharAuthModel;
+import com.xmasworking.wechar.util.AccessTokenUtil;
 import com.xmasworking.wechar.util.CheckUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,9 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/auth")
 public class WecharAuth2{
+    @Autowired
+    AccessTokenUtil accessTokenUtil;
 
     @RequestMapping
-    public String getKey(WeCharModel weCharModel){
+    public String getKey(WeCharAuthModel weCharModel){
 
         String signature=weCharModel.getSignature();
         String timestamp=weCharModel.getTimestamp();
@@ -32,6 +36,12 @@ public class WecharAuth2{
         }
 
         return "error";
+    }
+
+    @RequestMapping("/access_token")
+    public String getAccessToken(){
+        accessTokenUtil.gerAccessToken();
+        return "success";
     }
 
 }
