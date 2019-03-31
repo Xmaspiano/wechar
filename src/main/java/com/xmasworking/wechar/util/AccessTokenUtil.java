@@ -124,7 +124,7 @@ public final class AccessTokenUtil{
         }
 
         /* 注意：必须 http、https……开头，不然报错，浏览器地址栏不加 http 之类不出错是因为浏览器自动帮你补全了 */
-        String url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx8047ed4e28fc1ae3&secret=9720b9ba7c30d0db6ce9598fad7f0b72";//tokenURL;
+        String url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx4b637efe077fe3a3&secret=eb0f3bcae75342122cac2ba216dcd0db";//tokenURL;
         /* 这个对象有add()方法，可往请求头存入信息 */
         HttpHeaders headers = new HttpHeaders();
         /* 解决中文乱码的关键 , 还有更深层次的问题 关系到 StringHttpMessageConverter，先占位，以后补全*/
